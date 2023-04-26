@@ -14,7 +14,7 @@ exports.config = {
   helpers: {
     Appium: {
       platform: 'Android',
-      //app: 'http://localhost',
+      app: 'C:\\projetos\\project-codeceptjs-appium\\app\\app-release.apk',
       desiredCapabilities: {
         appPackage: "com.qazandoapp",
         appActivity: "MainActivity",
