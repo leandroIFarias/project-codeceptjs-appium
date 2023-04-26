@@ -1,0 +1,15 @@
+{
+  "name": "project-codeceptjs-appium",
+  "version": "1.0.0",
+  "description": "Projeto de testes automatizados com codeceptjs e appium",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "leandro farias",
+  "license": "ISC",
+  "dependencies": {
+    "codeceptjs": "^3.4.1",
+    "webdriverio": "^8.8.6"
+  }
+}
