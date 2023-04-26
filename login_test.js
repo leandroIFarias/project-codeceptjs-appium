@@ -3,12 +3,9 @@ Feature('login');
 // allows using the object globally in this file
 const { I, login_page } = inject() 
 
-Scenario('Login with success',  ( ) => {
+Scenario('Login with success',  ({home_page}) => {
     login_page.doLogin('teste@teste.com', '123456')
-
-    // check
-    I.waitForElement('~codigo', 5)
-    I.seeElement('~codigo')
+    home_page.checkLoginSuccess()
 });
 
 Scenario('Login with error',  ( ) => {
