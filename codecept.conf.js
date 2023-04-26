@@ -8,17 +8,22 @@ setCommonPlugins();
 
 /** @type {CodeceptJS.MainConfig} */
 exports.config = {
+  name: 'project-codeceptjs-appium',
   tests: './*_test.js',
   output: './output',
   helpers: {
     Appium: {
-      app: 'http://localhost',
       platform: 'Android',
-      device: 'Pixel_2_API_28'
+      //app: 'http://localhost',
+      desiredCapabilities: {
+        appPackage: "com.qazandoapp",
+        appActivity: "MainActivity",
+        deviceName: 'Pixel_2_API_28',
+        platformVersion: "9",
+      }
     }
   },
   include: {
     I: './steps_file.js'
   },
-  name: 'project-codeceptjs-appium'
 }
