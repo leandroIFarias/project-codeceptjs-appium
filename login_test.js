@@ -10,8 +10,5 @@ Scenario('Login with success',  ({home_page}) => {
 
 Scenario('Login with error',  ( ) => {
     login_page.doLogin('teste@teste.com', '123')
-
-    // check
-    I.waitForElement('~lognFail', 5)
-    I.seeElement('~lognFail')
+    login_page.checkLoginError()
 });

@@ -10,7 +10,7 @@ module.exports = {
     enter: '~entrar',
   },
 
-  texts:{
+  messages:{
     errorNoLogin: '~lognFail',
   },
 
@@ -23,5 +23,10 @@ module.exports = {
 
     // tap on enter
     I.tap(this.buttons.enter)
+  },
+
+  checkLoginError(){
+    I.waitForElement(this.messages.errorNoLogin, 5)
+    I.seeElement(this.messages.errorNoLogin)
   }
 }
