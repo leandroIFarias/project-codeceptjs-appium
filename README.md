@@ -53,5 +53,6 @@ Projeto de Automação. Onde é utilizado CodeceptJS e Appium, utilizando o padr
  - npx codeceptjs run --steps
  - npx codeceptjs run --grep "@login_sucesso"
  - npx codeceptjs run --grep "@login_error"
+ - npx codeceptjs run --reporter mochawesome
 
 2. Especificações dos diretórios
