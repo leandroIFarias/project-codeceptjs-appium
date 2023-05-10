@@ -1,34 +1,67 @@
-const {
-  setHeadlessWhen,
-  setCommonPlugins
-} = require('@codeceptjs/configure');
-// turn on headless mode when running with HEADLESS=true environment variable
-// export HEADLESS=true && npx codeceptjs run
-setHeadlessWhen(process.env.HEADLESS);
+const server = require('./server/server.js')
 
-// enable all common plugins https://github.com/codeceptjs/configure#setcommonplugins
-setCommonPlugins();
-
-/** @type {CodeceptJS.MainConfig} */
 exports.config = {
-  name: 'project-codeceptjs-appium',
-  tests: './steps/*_test.js',
   output: './output',
+  //timeout: 300,
   helpers: {
     Appium: {
       platform: 'Android',
       app: 'C:\\projetos\\project-codeceptjs-appium\\app\\app-release.apk',
       desiredCapabilities: {
-        appPackage: "com.qazandoapp",
-        appActivity: "MainActivity",
+        appPackage: 'com.qazandoapp',
+        appActivity: 'MainActivity',
         deviceName: 'Pixel_2_API_28',
-        platformVersion: "9",
+        platformVersion: '9'
       }
     }
   },
   include: {
     I: './steps_file.js',
-    login_page: "./pages/login_page.js",
-    home_page: "./pages/home_page.js"
+    login_page: './pages/login_page.js',
+    home_page: './pages/home_page.js'
   },
+  mocha: {},
+  bootstrap: async () => {
+    await server.start();
+  },
+  timeout: null,
+  teardown: async () => {
+    await server.stop();
+  },
+  hooks: [],
+  gherkin: {
+    features: './features/*.feature',
+    steps: './step_definitions/*_steps.js' 
+    //['./step_definitions/steps.js']
+  },
+  plugins: {
+    screenshotOnFail: {
+      enabled: true
+    },
+    tryTo: {
+      enabled: true
+    },
+    retryFailedStep: {
+      enabled: false
+    },
+    retryTo: {
+      enabled: true
+    },
+    eachElement: {
+      enabled: true
+    },
+    pauseOnFail: {}
+  },
+  stepTimeout: 0,
+  stepTimeoutOverride: [{
+      pattern: 'wait.*',
+      timeout: 0
+    },
+    {
+      pattern: 'amOnPage',
+      timeout: 0
+    }
+  ],
+  name: 'project-codeceptjs-appium',
+  tests: './steps/*_test.js'
 }
