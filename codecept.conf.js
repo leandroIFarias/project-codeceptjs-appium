@@ -70,5 +70,5 @@ exports.config = {
     }
   ],
   name: 'project-codeceptjs-appium',
-  tests: './steps/*_test.js'
+  tests: './tests/*_test.js'
 }
