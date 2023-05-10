@@ -13,6 +13,9 @@ exports.config = {
         deviceName: 'Pixel_2_API_28',
         platformVersion: '9'
       }
+    },
+    "Mochawesome": {
+      "uniqueScreenshotNames": "true"
     }
   },
   include: {
@@ -20,7 +23,11 @@ exports.config = {
     login_page: './pages/login_page.js',
     home_page: './pages/home_page.js'
   },
-  mocha: {},
+  mocha: {
+    "reporterOptions": {
+      "reportDir": "output"
+    }
+  },
   bootstrap: async () => {
     await server.start();
   },
