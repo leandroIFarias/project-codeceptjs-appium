@@ -1,4 +1,5 @@
 const server = require('./server/server.js')
+require('dotenv').config();
 
 exports.config = {
   name: 'project-codeceptjs-appium',
@@ -6,13 +7,18 @@ exports.config = {
   output: './output',
   helpers: {
     Appium: {
+      app: process.env.BROWSERSTACK_APP_ID,
+      hostname: 'hub-cloud.browserstack.com',
+      port: 4444,
       platform: 'Android',
-      app: 'C:\\projetos\\project-codeceptjs-appium\\app\\app-release.apk',
+      user: process.env.BROWSERSTACK_USERNAME,
+      key: process.env.BROWSERSTACK_ACCESS_KEY,
       desiredCapabilities: {
-        appPackage: 'com.qazandoapp',
-        appActivity: 'MainActivity',
-        deviceName: 'Pixel_2_API_28',
-        platformVersion: '9'
+          appPackage: 'com.qazandoapp',
+          appActivity: 'MainActivity',
+          deviceName: 'Samsung Galaxy S9',
+          platformVersion: '8.0',
+          autoGrantPermissions: 'true',
       }
     },
     "Mochawesome": {

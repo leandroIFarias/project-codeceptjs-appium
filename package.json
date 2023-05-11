@@ -4,16 +4,22 @@
   "description": "Projeto de testes automatizados com codeceptjs e appium",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test:local-appium": "npx codeceptjs run --steps --config=codecept.local.conf.js",
+    "test:browserstack-appium": "npx codeceptjs run --steps --config=codecept.browserstack.conf.js",
+    "test:local-login_sucesso": "npx codeceptjs run --grep '@login_sucesso' --config=codecept.conf.js",
+    "test:browserstack-login_sucesso": "npx codeceptjs run --grep '@login_sucesso' --config=codecept.browserstack.conf.js"
   },
   "author": "leandro farias",
   "license": "ISC",
   "dependencies": {
     "codeceptjs": "^3.4.1",
+    "dotenv": "^16.0.3",
     "mochawesome": "^7.1.3",
     "webdriverio": "^8.8.6"
   },
   "devDependencies": {
+    "@wdio/browserstack-service": "^8.10.2",
     "mocha": "^10.2.0"
   }
 }
+
