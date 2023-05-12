@@ -1,5 +1,7 @@
-# Demo Project - CodeceptJS with Appium 
-Projeto de Automação. Onde é utilizado CodeceptJS e Appium, utilizando o padrão PageObject.
+# Demo Project - CodeceptJS with Appium and browserstack
+Demo de um Projeto de Automação.
+Onde é utilizado o CodeceptJS com Appium e Browserstack, utilizando o BDD e o padrão PageObject.
+Podendo ser executado tanto pelos arquivos de Testes quanto pela as features, de acordo com o comando inserido no terminal.
 
 
 ## Configuração
@@ -42,7 +44,8 @@ Projeto de Automação. Onde é utilizado CodeceptJS e Appium, utilizando o padr
 	Obs.: Para criar um novo cenario, executar o cmd: "npx codeceptjs gt"
 17. Criar o padrao Page Objects, com o comando: (npx codeceptjs gpo)
 18. Adicionar o gherkin (BDD) atraves do comando: (npx codeceptjs gherkin:init) 
-
+19. Executar o comando (npm install dotenv) para criar o arquivo .env para salvar as config do APP e browserstack (Obs. tem que criar o arquivo pois ele está no .gitignore)
+20. Executar o comando (npminstall@wdio/browserstack-service --save-dev) para poder executar o aplicativo via browserstack (Obs. lembrar de configurar as capabilities do browserstack e subir o arquivo .apk no browserstack - no site do browserstack tem o passo a passo)
 
 ## Extensões VS Code
  - BDD Highlighter
@@ -54,5 +57,17 @@ Projeto de Automação. Onde é utilizado CodeceptJS e Appium, utilizando o padr
  - npx codeceptjs run --grep "@login_sucesso"
  - npx codeceptjs run --grep "@login_error"
  - npx codeceptjs run --reporter mochawesome
+ - npx codeceptjs run --steps --config=codecept.local.conf.js
+ - npx codeceptjs run --steps --config=codecept.browserstack.conf.js
+ - npx codeceptjs run --grep '@login_sucesso' --config=codecept.conf.js
+ - npx codeceptjs run --grep '@login_sucesso' --config=codecept.browserstack.conf.js
 
-2. Especificações dos diretórios
+## Especificações dos diretórios
+ - app: contém o app .apk (inserido no .gitignore)
+ - features: features do BDD
+ - output: local para salvar as evidências (inserido no .gitignore)
+ - pages: contém os objetos mapeados
+ - server: contém Bootstrap e Teardown (para ser implementado conforme necessidade)
+ - step_definitions: contém os steps utilizados pelas features
+ - tests: contém exemplos de cenários sem o BDD apenas com o PageObject
+ - node_modules: Contém as bibliotecas utilizadas (inserido no .gitignore)

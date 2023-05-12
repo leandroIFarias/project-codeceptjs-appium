@@ -2,7 +2,7 @@ const server = require('./server/server.js')
 require('dotenv').config();
 
 exports.config = {
-  name: 'project-codeceptjs-appium',
+  name: 'codeceptjs-appium-browserstack',
   tests: './tests/*_test.js',
   output: './output',
   helpers: {
@@ -14,7 +14,7 @@ exports.config = {
       user: process.env.BROWSERSTACK_USERNAME,
       key: process.env.BROWSERSTACK_ACCESS_KEY,
       desiredCapabilities: {
-          appPackage: 'com.qazandoapp',
+          appPackage: process.env.APP_PACKAGE,
           appActivity: 'MainActivity',
           deviceName: 'Samsung Galaxy S9',
           platformVersion: '8.0',

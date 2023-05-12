@@ -1,4 +1,5 @@
 const server = require('./server/server.js')
+require('dotenv').config();
 
 exports.config = {
   name: 'project-codeceptjs-appium',
@@ -9,7 +10,7 @@ exports.config = {
       platform: 'Android',
       app: 'C:\\projetos\\project-codeceptjs-appium\\app\\app-release.apk',
       desiredCapabilities: {
-        appPackage: 'com.qazandoapp',
+        appPackage: process.env.APP_PACKAGE,
         appActivity: 'MainActivity',
         deviceName: 'Pixel_2_API_28',
         platformVersion: '9'
